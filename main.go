@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/sim4life/go_blog/Godeps/_workspace/src/github.com/julienschmidt/httprouter"
@@ -21,7 +22,7 @@ func main() {
 	r.GET("/posts/:id/edit", PostEditHandler)
 
 	fmt.Println("Starting server on :8080")
-	http.ListenAndServe(":8080", r)
+	log.Fatal(http.ListenAndServe(":8080", r))
 }
 
 func HomeHandler(rw http.ResponseWriter, r *http.Request, p httprouter.Params) {
